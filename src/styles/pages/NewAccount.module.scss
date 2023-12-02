@@ -1,0 +1,55 @@
+@import '../global.scss';
+
+
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        width: $size375px;
+        min-height: 100vh;
+        flex-direction: column;
+        align-items: center;
+
+        .line {
+            width: 100%;
+            height: $size12px;
+
+            background-color: $white-1;
+        }
+
+        .text1 {
+            color: $gray-1;
+            text-align: center;
+            font-size: $size21px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin-top: $size36px;
+
+        }
+
+        .completeBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: $size328px;
+            height: $size48px;
+            background-color: $white-5;
+            border: none;
+            border-radius: $size8px;
+
+            color: $gray-1;
+            text-align: center;
+            font-size: $size18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin-top: $size44px;
+
+            margin-bottom: $size28px;
+        }
+
+
+    }
+}

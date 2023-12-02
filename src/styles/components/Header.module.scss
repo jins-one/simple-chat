@@ -1,0 +1,41 @@
+@import "../global.scss";
+
+@media screen and (max-width: $mobile-width) {
+  .container {
+    display: flex;
+    width: 100%;
+    min-height: 4rem;
+    background-color: $white-3;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+
+    .top-bar-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+
+      .left {
+        border: none;
+        background: none;
+        width: 1.75rem;
+      }
+
+      .center {
+        border: none;
+        background: none;
+        color: $gray-3;
+        font-size: medium;
+      }
+
+      .right {
+        border: none;
+        background: none;
+        width: 1.75rem;
+      }
+    }
+  }
+}

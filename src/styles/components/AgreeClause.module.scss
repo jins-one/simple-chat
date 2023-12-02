@@ -1,0 +1,46 @@
+@import '../global.scss';
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        margin-top: $size30px;
+
+        input[id=agree-radio] {
+            width: $size24px;
+            height: $size24px;
+            margin-left: $size12px;
+        }
+
+        .textBox {
+            display: flex;
+            flex-direction: column;
+            color: $black-1;
+            font-size: $size14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin-left: $size7px;
+
+            p {
+                color: $gray-2;
+                font-size: $size12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            a {
+                color: $gray-2;
+            }
+
+            label {
+                margin-top: $size4px;
+                cursor: pointer;
+            }
+        }
+    }
+}

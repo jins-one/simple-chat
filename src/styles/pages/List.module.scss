@@ -1,0 +1,61 @@
+@import "../global.scss";
+
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        width: $size375px;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+
+        position: relative;
+
+        .line {
+            width: 100%;
+            height: $size12px;
+
+            background-color: $white-1;
+        }
+
+        .textBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+                color: $gray-1;
+                text-align: center;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-align: center;
+            }
+
+            .text1 {
+                font-size: $size18px;
+            }
+
+            .text2 {
+                font-size: $size14px;
+            }
+        }
+
+        .newRoomBtn {
+            position: absolute;
+            right: $size28px;
+            bottom: $size28px;
+
+            background-color: $white-3;
+            border: none;
+        }
+    }
+
+}
+
+.mt213 {
+    margin-top: $size213px;
+}
+
+.mt13 {
+    margin-top: $size13px;
+}

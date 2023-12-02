@@ -1,0 +1,53 @@
+@import '../global.scss';
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: $size343px;
+
+        .text1 {
+            color: $gray-2;
+            font-size: $size14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        input {
+            border: none;
+            font-size: $size20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin-top: $size16px;
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: $gray-2;
+            }
+        }
+
+        .smallLine {
+            width: $size343px;
+            height: $size2px;
+
+            background-color: $white-1;
+
+            margin-top: $size12px;
+        }
+
+        .errorText {
+            color: $main-blue;
+            font-size: $size10px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin-top: $size4px;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+@import '../global.scss';
+
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+
+        border: solid 2px $white-6;
+        border-width: 0px 0px 2px 0px;
+
+        padding: $size20px;
+
+        .thumnail {
+            display: flex;
+            width: $size40px;
+            height: $size40px;
+            background-color: $main-blue-2;
+            border-radius: 4px;
+        }
+
+        .msgBox {
+            display: flex;
+            flex-direction: column;
+
+
+            p {
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            .text1 {
+                color: $gray-3;
+                font-size: $size16px;
+            }
+
+            .text2 {
+                color: $gray-2;
+                font-size: $size12px;
+            }
+        }
+
+        .lastMsgTime {
+            color: $gray-2;
+            font-size: $size16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-left: auto;
+        }
+    }
+}
+
+.ml12{
+    margin-left: $size12px;
+}

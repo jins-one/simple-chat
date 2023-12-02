@@ -1,0 +1,94 @@
+@import '../global.scss';
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: $size343px;
+
+        .text1 {
+            color: $gray-2;
+            font-size: $size14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            margin-top: $size16px;
+
+            button {
+                display: flex;
+                margin-left: auto;
+
+                width: $size80px;
+                height: $size28px;
+                border: none;
+                border-radius: $size8px;
+                align-items: center;
+                justify-content: center;
+
+                color: $white-4;
+                text-align: center;
+                font-size: $size12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                background-color: $main-blue;
+
+                cursor: pointer;
+
+            }
+
+            img {
+                animation: rotate_image 1s linear infinite;
+                transform-origin: 50% 50%;
+            }
+        }
+
+        input {
+            border: none;
+            font-size: $size20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: $gray-2;
+            }
+        }
+
+        .smallLine {
+            width: $size343px;
+            height: $size2px;
+
+            background-color: $white-1;
+
+            margin-top: $size12px;
+        }
+
+        .errorText {
+            color: $main-blue;
+            font-size: $size10px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin-top: $size4px;
+        }
+    }
+}
+
+@keyframes rotate_image {
+    100% {
+        transform: rotate(-360deg);
+    }
+}

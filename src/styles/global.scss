@@ -1,0 +1,170 @@
+
+// $mobile-width: 375px;
+$mobile-width: 2560px;
+
+
+$white-1: #f5f5f7;
+$white-2: #ededed;
+$white-3: #ffffff;
+$white-4: #fefefe;
+$white-5: #f9f9f9;
+$white-6: #eef2f4;
+
+$gray-1: #757575;
+$gray-2: #c4c4c4;
+$gray-3: #7b7b7b;
+$gray-4: #9e9e9e;
+
+$black-1: #424242;
+$black-2: #000000;
+
+$main-blue: #509bf8;
+$main-blue-2: #b9d7fc;
+$main-blue-3: #75aff8;
+
+$size1px: 0.0625rem;
+$size2px: 0.125rem;
+$size4px: 0.25rem;
+$size7px: 0.4375rem;
+$size8px: 0.5rem;
+$size10px: 0.625rem;
+
+$size12px: 0.75rem;
+$size13px: 0.8125rem;
+$size14px: 0.875rem;
+$size16px: 1rem;
+$size17px: 1.0625rem;
+$size18px: 1.125rem;
+$size20px: 1.25rem;
+
+$size21px: 1.3125rem;
+$size24px: 1.5rem;
+$size28px: 1.75rem;
+$size30px: 1.875rem;
+
+$size32px: 2rem;
+$size35px: 2.1875rem;
+$size36px: 2.25rem;
+$size39px: 2.4375rem;
+$size40px: 2.5rem;
+
+$size44px: 2.75rem;
+$size48px: 3rem;
+$size50px: 3.125rem;
+
+$size72px: 4.5rem;
+$size80px: 5rem;
+
+$size83px: 5.1875rem;
+
+$size121px: 7.5625rem;
+
+$size132px: 8.25rem;
+$size140px: 8.75rem;
+
+$size152px: 9.5rem;
+$size157px: 9.8125rem;
+$size158px: 9.875rem;
+
+$size178px: 11.125rem;
+
+$size213px: 13.3125rem;
+
+$size300px: 18.75rem;
+$size328px: 20.5rem;
+$size335px: 20.9375rem;
+
+$size343px: 21.4375rem;
+
+$size375px : 23.4375rem;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Apple SD Gothic Neo';
+
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--fontNoto);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 100;
+  src: local("Apple SD Gothic Neo Thin"), url("./font/100_AppleSDGothicNeo-Thin.woff2") format("woff2"),
+    url("./font/100_AppleSDGothicNeo-Thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 200;
+  src: local("Apple SD Gothic Neo UltraLight"), url("./font/200_AppleSDGothicNeo-UltraLight.woff2") format("woff2"),
+    url("./font/200_AppleSDGothicNeo-UltraLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Apple SD Gothic Neo Light"), url("./font/300_AppleSDGothicNeo-Light.woff2") format("woff2"),
+    url("./font/300_AppleSDGothicNeo-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Apple SD Gothic Neo Medium"), url("./font/400_AppleSDGothicNeo-Medium.woff2") format("woff2"),
+    url("./font/400_AppleSDGothicNeo-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Apple SD Gothic Neo Regular"), url("./font/500_AppleSDGothicNeo-Regular.woff2") format("woff2"),
+    url("./font/500_AppleSDGothicNeo-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Apple SD Gothic Neo SemiBold"), url("./font/600_AppleSDGothicNeo-SemiBold.woff2") format("woff2"),
+    url("./font/600_AppleSDGothicNeo-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Apple SD Gothic Neo Bold"), url("./font/700_AppleSDGothicNeo-Bold.woff2") format("woff2"),
+    url("./font/700_AppleSDGothicNeo-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 800;
+  src: local("Apple SD Gothic Neo ExtraBold"), url("./font/800_AppleSDGothicNeo-ExtraBold.woff2") format("woff2"),
+    url("./font/800_AppleSDGothicNeo-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Apple SD Gothic Neo";
+  font-style: normal;
+  font-weight: 900;
+  src: local("Apple SD Gothic Neo Heavy"), url("./font/900_AppleSDGothicNeo-Heavy.woff2") format("woff2"),
+    url("./font/900_AppleSDGothicNeo-Heavy.otf") format("opentype");
+}

@@ -1,0 +1,69 @@
+@import "../global.scss";
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-wrapper {
+  --b: 4px; /* thickness of the border */
+  --c: rgb(30, 144, 255); /* color of the border */
+  --w: 30px; /* width of border */
+
+  border: var(--b) solid #0000; /* space for the border */
+  --_g: #0000 90deg, var(--c) 0;
+  --_p: var(--w) var(--w) border-box no-repeat;
+  background: conic-gradient(from 90deg at top var(--b) left var(--b), var(--_g)) 0 0 / var(--_p),
+    conic-gradient(from 180deg at top var(--b) right var(--b), var(--_g)) 100% 0 / var(--_p),
+    conic-gradient(from 0deg at bottom var(--b) left var(--b), var(--_g)) 0 100% / var(--_p),
+    conic-gradient(from -90deg at bottom var(--b) right var(--b), var(--_g)) 100% 100% / var(--_p);
+
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  color: #4a4a4a;
+}
+
+.subtitle {
+  // margin: 0 0 1rem 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.clock-box {
+  background-color: #f7f7f7;
+  padding: 0.2rem;
+  border-radius: 0.3rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.qr-share-button {
+  border: 0;
+  border-radius: 30px;
+  background-color: $main-blue;
+  color: #fff;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  line-height: 0;
+
+  display: flex;
+  align-items: center;
+}

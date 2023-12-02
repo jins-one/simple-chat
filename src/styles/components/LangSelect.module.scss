@@ -1,0 +1,50 @@
+@import '../global.scss';
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: $size343px;
+
+        .text1 {
+            color: $gray-2;
+            font-size: $size14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .buttonBox {
+            display: flex;
+            flex-direction: row;
+            width: $size343px;
+            justify-content: space-between;
+
+            margin-top: $size16px;
+
+            button {
+                width: $size158px;
+                height: $size40px;
+
+                border-radius: $size8px;
+                border: $size2px solid $white-2;
+
+                background-color: $white-3;
+
+                color: $gray-1;
+                font-size: $size18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                cursor: pointer;
+            }
+
+            .choose {
+                color: $white-4;
+                background-color: $main-blue;
+                border-color: $main-blue;
+            }
+        }
+
+    }
+}

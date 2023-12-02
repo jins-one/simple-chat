@@ -1,0 +1,129 @@
+@import "../global.scss";
+
+@media (max-width: $mobile-width) {
+    .container {
+        display: flex;
+        width: $size375px;
+
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+
+        .line {
+            width: 100%;
+            height: $size12px;
+
+            background-color: $white-1;
+        }
+
+        .birdBox {
+            position: relative;
+
+            width: $size132px;
+            height: $size152px;
+
+            margin-top: $size83px;
+
+            .talkBox {
+                position: absolute;
+                transform: translate(-30%, -100%);
+            }
+        }
+
+        .text1 {
+            color: #757575;
+            text-align: center;
+            font-size: $size18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .buttonBox {
+            display: flex;
+            flex-direction: row;
+            width: $size300px;
+            justify-content: space-between;
+
+            margin-top: $size40px;
+
+
+
+            button {
+                display: flex;
+                width: $size140px;
+                height: $size40px;
+                align-items: center;
+                justify-content: center;
+
+                text-align: center;
+                font-size: $size18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                border: solid $size1px $main-blue;
+                border-radius: $size8px;
+
+                cursor: pointer;
+            }
+
+            button:nth-child(1) {
+                color: $white-4;
+                background-color: $main-blue;
+            }
+
+            button:nth-child(2) {
+                color: $main-blue;
+                background-color: $white-3;
+            }
+        }
+
+        .orLine {
+            display: flex;
+            width: $size300px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: $size72px;
+
+            div:nth-of-type(1) {
+                width: $size121px;
+                height: $size1px;
+                background-color: $gray-2;
+            }
+
+            div:nth-of-type(2) {
+                width: $size121px;
+                height: $size1px;
+                background-color: $gray-2;
+            }
+
+            p {
+                color: $gray-2;
+                font-size: $size12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+            }
+        }
+
+        .orLine+a {
+            margin-top: $size20px;
+            text-decoration: none;
+
+            color: $main-blue;
+            text-align: center;
+            font-size: $size16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}
+
+.mt32 {
+    margin-top: $size32px;
+}
