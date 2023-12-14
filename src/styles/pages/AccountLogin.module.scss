@@ -53,6 +53,13 @@
             line-height: normal;
 
             margin-top: $size44px;
+
+            cursor: pointer;
+
+            &.active{
+                background-color: $main-blue;
+                color: $white-3;
+            }
         }
 
         .otherBtns {

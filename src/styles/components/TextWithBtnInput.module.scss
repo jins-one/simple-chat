@@ -20,6 +20,10 @@
 
             margin-top: $size16px;
 
+            input:disabled{
+                background-color: transparent;
+            }
+
             button {
                 display: flex;
                 margin-left: auto;

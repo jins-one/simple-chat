@@ -6,7 +6,7 @@ import turnIcon from '../assets/images/u_sync.svg'
  * 회원가입 페이지에서 전송 버튼이 포함된 input component
  * @returns component
  */
-export default function TextWithBtnInput({ style, titleText, placeholder, isError, errorText, btnText, btnFunc }: TextWithBtnInputProps): ReactElement {
+export default function TextWithBtnInput({ style}: TextWithBtnInputProps): ReactElement {
     const [isSend, setIsSend] = useState<boolean>(false);
     function turnBtn() {
         setIsSend(true);
@@ -14,7 +14,7 @@ export default function TextWithBtnInput({ style, titleText, placeholder, isErro
     }
     return (
         <div style={style} className={st.container}>
-            <p className={st.text1}>{titleText}</p>
+            {/* <p className={st.text1}>{titleText}</p>
             <div className={st.box}>
                 <input placeholder={placeholder} />
                 <button disabled={isSend} onClick={async () => {
@@ -33,7 +33,7 @@ export default function TextWithBtnInput({ style, titleText, placeholder, isErro
             <div className={st.smallLine} />
             {isError ? (
                 <p className={st.errorText}>{errorText}</p>
-            ) : (null)}
+            ) : (null)} */}
 
         </div>
     )

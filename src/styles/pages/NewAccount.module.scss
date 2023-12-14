@@ -48,6 +48,12 @@
             margin-top: $size44px;
 
             margin-bottom: $size28px;
+
+            cursor: pointer;
+            &.active{
+                background-color: $main-blue;
+                color: $white-3;
+            }
         }
 
 

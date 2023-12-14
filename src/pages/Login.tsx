@@ -1,11 +1,12 @@
 import React, { ReactElement, useState } from "react";
 import st from "../styles/pages/Login.module.scss";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MainLogo from "../assets/images/main-logo.svg";
 import TalkBox from "../assets/images/talk-box.svg";
 
 export default function Login(): ReactElement {
+  const navigate = useNavigate();
   const [leng, setLang] = useState<string>("kr");
   const [agree, setAgree] = useState<boolean>(false);
 
@@ -31,8 +32,8 @@ export default function Login(): ReactElement {
       <p className={st.text1}>잠시에 오신걸 환영합니다!</p>
 
       <div className={st.buttonBox}>
-        <button>로그인</button>
-        <button>회원가입</button>
+        <button onClick={()=>{navigate('/account/login')}}>로그인</button>
+        <button onClick={()=>{navigate('/account')}}>회원가입</button>
       </div>
 
       <div className={st.orLine}>
