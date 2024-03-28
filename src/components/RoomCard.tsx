@@ -9,7 +9,7 @@ export default function RoomCard(props: RoomCardType): ReactElement {
                 <p className={st.text1}>{props.nickName}</p>
                 <p className={st.text2}>{props.lastMsg}</p>
             </div>
-            <p className={st.lastMsgTime}>{props.lastMsgTime} min</p>
+            <p className={st.lastMsgTime}>{props.lastMsgTime.toISOString()} min</p>
         </div>
     )
 }

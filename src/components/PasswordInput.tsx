@@ -3,7 +3,7 @@ import st from '../styles/components/PasswordInput.module.scss'
 import eyeIcon from '../assets/images/fi_eye.svg'
 import eyeIconColor from '../assets/images/fi_eye-color.svg'
 import { PasswordInputProps } from '../models/PasswordInput';
-export default function PasswordInput({ style, isError, errorText, titleText }: PasswordInputProps): ReactElement {
+export default function PasswordInput({ style, isError, errorText, titleText, onChange }: PasswordInputProps): ReactElement {
     const input = useRef<HTMLInputElement>(null);
     const [passwordState, setPasswordState] = useState<boolean>(false)
     function showToggle(): void {
@@ -20,7 +20,7 @@ export default function PasswordInput({ style, isError, errorText, titleText }: 
         <div style={style} className={st.container}>
             <p>{titleText}</p>
             <div className={st.inputBox}>
-                <input ref={input} type='password' />
+                <input onChange={(e)=>onChange(e.target.value)} ref={input} type='password' />
                 <img onClick={() => { showToggle() }} src={!passwordState ? eyeIcon : eyeIconColor} alt='비밀번호 보기 버튼' />
             </div>
             <div className={st.smallLine} />

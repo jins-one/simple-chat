@@ -7,14 +7,14 @@ import { LangSelectProps } from "../models/LangSelectProps";
  * @param param0 LangSelectProps
  * @returns component
  */
-export default function LangSelect({ style }: LangSelectProps): ReactElement {
+export default function LangSelect({ style,onChange }: LangSelectProps): ReactElement {
     const [lang, setLang] = useState<boolean>(true);
     return (
         <div style={{ ...style }} className={st.container}>
             <p className={st.text1}>사용할 언어를 선택해주세요</p>
             <div className={st.buttonBox}>
-                <button onClick={() => { setLang(true); }} className={`${lang ? st.choose : ''}`}>Korea</button>
-                <button onClick={() => { setLang(false); }} className={`${!lang ? st.choose : ''}`}>English</button>
+                <button onClick={() => { setLang(true);onChange('kr') }} className={`${lang ? st.choose : ''}`}>Korea</button>
+                <button onClick={() => { setLang(false);onChange('en') }} className={`${!lang ? st.choose : ''}`}>English</button>
             </div>
         </div>
     )

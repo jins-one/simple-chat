@@ -9,16 +9,20 @@ import AccountLogin from './pages/AccountLogin';
 import NewAccount from './pages/NewAccount';
 import './styles/global.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import {store} from './redux/store/store'
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        {/* <Route path="/" element={<App />} /> */}
         <Route path="/chat" element={<Chat />} />
 
         {/* 로그인, 회원가입 선택 페이지 */}
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
 
         {/* 채팅 목록 페이지 */}
@@ -34,5 +38,6 @@ root.render(
         <Route path="/account" element={<NewAccount />} />
       </Routes>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );

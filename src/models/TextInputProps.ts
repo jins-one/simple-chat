@@ -3,6 +3,7 @@ export interface TextInputProps {
     placeholder: string;
     isError: boolean;
     errorText: string;
+    onChange(value:string):void;
     style?: {
         marginTop?: string;
     }
