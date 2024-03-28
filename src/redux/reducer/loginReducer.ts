@@ -2,7 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import nickAndEmailOverlapCheck from "../../api/get/nickAndEmailOverlapCheck";
 import { ErrorResponse, loginArg, nickNameCheckArg, sendEmailArg } from "../../api/types";
 import sendEmail from "../../api/post/sendEmail";
-import login from "../../api/post/login";
+import login, { loginResponse } from "../../api/post/login";
 
 /**
  * 로그인
@@ -12,29 +12,23 @@ export const loginBucket = createAsyncThunk(
     // action 이름
     "api/login",
     // 처리할 비동기 함수
-    async ({email,password}:loginArg,{ rejectWithValue }) => {
-        try {
-            // 서버에서 데이터를 불러옴
-            const res = await login(email,password)
-            // action의 payload 리턴
-            return res;
-        } catch (err) {
-            console.log(err)
-            throw err;
-        }
+    async ({ email, password }: loginArg, { rejectWithValue }) => {
+        const a = await login(email, password);
+        console.log(a);
+        return a
 
     }
 );
 interface responseWrapper {
-    res: ErrorResponse|null,
+    res: null | loginResponse,
     isLoading: boolean;
-    complete:boolean;
+    complete: boolean;
 }
 export const initialState: responseWrapper = {
     res: null,
 
     isLoading: false,
-    complete:false
+    complete: false
 };
 const loginSlice = createSlice({
     name: "login",
@@ -48,11 +42,14 @@ const loginSlice = createSlice({
             state.isLoading = true;
             return state;
         })
-            .addCase(loginBucket.fulfilled, (state, action:PayloadAction<ErrorResponse|null>) => {
+            .addCase(loginBucket.fulfilled, (state, action: PayloadAction<loginResponse | null>) => {
                 console.log('fulfilled');
+                if (action.payload?.accessToken) {
+                    localStorage.setItem('access', "token="+action.payload.accessToken+";" ?? '')
+                }
                 state.res = action.payload;
                 state.isLoading = false;
-                state.complete=true;
+                state.complete = true;
                 return state;
             })
             .addCase(loginBucket.rejected, (state, action) => {

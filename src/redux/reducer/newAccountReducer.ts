@@ -12,29 +12,24 @@ export const newAccountBucket = createAsyncThunk(
     // action 이름
     "api/account/join",
     // 처리할 비동기 함수
-    async ({code,email,language,nickname,password}:newAccountArg,{ rejectWithValue }) => {
-        try {
-            // 서버에서 데이터를 불러옴
-            const res = await newAccount(nickname,email,password,language,code)
-            // action의 payload 리턴
-            return res;
-        } catch (err) {
-            console.log(err)
-            throw err;
-        }
+    async ({ code, email, language, nickname, password }: newAccountArg, { rejectWithValue }) => {
+        // 서버에서 데이터를 불러옴
+        const res = await newAccount(nickname, email, password, language, code)
+        // action의 payload 리턴
+        return res;
 
     }
 );
 interface responseWrapper {
-    res: ErrorResponse|null,
+    res: ErrorResponse | null,
     isLoading: boolean;
-    complete:boolean;
+    complete: boolean;
 }
 export const initialState: responseWrapper = {
     res: null,
 
     isLoading: false,
-    complete:false
+    complete: false
 };
 const newAccountSlice = createSlice({
     name: "account/join",
@@ -48,11 +43,11 @@ const newAccountSlice = createSlice({
             state.isLoading = true;
             return state;
         })
-            .addCase(newAccountBucket.fulfilled, (state, action:PayloadAction<ErrorResponse|null>) => {
+            .addCase(newAccountBucket.fulfilled, (state, action: PayloadAction<ErrorResponse | null>) => {
                 console.log('fulfilled');
                 state.res = action.payload;
                 state.isLoading = false;
-                state.complete=true;
+                state.complete = true;
                 return state;
             })
             .addCase(newAccountBucket.rejected, (state, action) => {

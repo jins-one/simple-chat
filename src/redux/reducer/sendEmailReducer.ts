@@ -11,29 +11,24 @@ export const sendEmailBucket = createAsyncThunk(
     // action 이름
     "api/account/email/code",
     // 처리할 비동기 함수
-    async ({email}:sendEmailArg,{ rejectWithValue }) => {
-        try {
-            // 서버에서 데이터를 불러옴
-            const res = await sendEmail(email)
-            // action의 payload 리턴
-            return res;
-        } catch (err) {
-            console.log(err)
-            throw err;
-        }
+    async ({ email }: sendEmailArg, { rejectWithValue }) => {
+        // 서버에서 데이터를 불러옴
+        const res = await sendEmail(email)
+        // action의 payload 리턴
+        return res;
 
     }
 );
 interface responseWrapper {
-    res: ErrorResponse|null,
+    res: ErrorResponse | null,
     isLoading: boolean;
-    complete:boolean;
+    complete: boolean;
 }
 export const initialState: responseWrapper = {
     res: null,
 
     isLoading: false,
-    complete:false
+    complete: false
 };
 const emailSendSlice = createSlice({
     name: "account/email/code",
@@ -47,11 +42,11 @@ const emailSendSlice = createSlice({
             state.isLoading = true;
             return state;
         })
-            .addCase(sendEmailBucket.fulfilled, (state, action:PayloadAction<ErrorResponse|null>) => {
+            .addCase(sendEmailBucket.fulfilled, (state, action: PayloadAction<ErrorResponse | null>) => {
                 console.log('fulfilled');
                 state.res = action.payload;
                 state.isLoading = false;
-                state.complete=true;
+                state.complete = true;
                 return state;
             })
             .addCase(sendEmailBucket.rejected, (state, action) => {

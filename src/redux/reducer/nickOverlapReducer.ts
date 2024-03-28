@@ -10,29 +10,24 @@ export const nickOverlapCheckBucket = createAsyncThunk(
     // action 이름
     "api/account/nick",
     // 처리할 비동기 함수
-    async ({nickName}:nickNameCheckArg,{ rejectWithValue }) => {
-        try {
-            // 서버에서 데이터를 불러옴
-            const res = await nickAndEmailOverlapCheck(nickName)
-            // action의 payload 리턴
-            return res;
-        } catch (err) {
-            console.log(err)
-            throw err;
-        }
+    async ({ nickName }: nickNameCheckArg, { rejectWithValue }) => {
+        // 서버에서 데이터를 불러옴
+        const res = await nickAndEmailOverlapCheck(nickName)
+        // action의 payload 리턴
+        return res;
 
     }
 );
 interface responseWrapper {
-    res: ErrorResponse|null,
+    res: ErrorResponse | null,
     isLoading: boolean;
-    complete:boolean;
+    complete: boolean;
 }
 export const initialState: responseWrapper = {
     res: null,
 
     isLoading: false,
-    complete:false
+    complete: false
 };
 const nickOverlapCheckSlice = createSlice({
     name: "account/nick",
@@ -46,11 +41,11 @@ const nickOverlapCheckSlice = createSlice({
             state.isLoading = true;
             return state;
         })
-            .addCase(nickOverlapCheckBucket.fulfilled, (state, action:PayloadAction<ErrorResponse|null>) => {
+            .addCase(nickOverlapCheckBucket.fulfilled, (state, action: PayloadAction<ErrorResponse | null>) => {
                 console.log('fulfilled');
                 state.res = action.payload;
                 state.isLoading = false;
-                state.complete=true;
+                state.complete = true;
                 return state;
             })
             .addCase(nickOverlapCheckBucket.rejected, (state, action) => {

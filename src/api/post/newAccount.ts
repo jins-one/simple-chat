@@ -1,14 +1,21 @@
 import config from "../../config/config";
-import { fetchResult } from "../../functions/util";
+import { callApi} from "../../functions/util";
 import { ErrorResponse } from "../types";
 
-export default function newAccount(nickname='',email='',password='',language='kr',code=''){
-    console.log('...')
-    return fetchResult<ErrorResponse>(`${config.apiUrl.newAccount}`,'POST',{
+export default async function newAccount(nickname='',email='',password='',language='kr',code=''){
+    // console.log('...')
+    return await callApi(`${config.apiUrl.newAccount}`,'POST',{
         nickname,
         email,
         password,
         language,
         code
     })
+    // return await (await fetchResult<ErrorResponse>(`${config.apiUrl.newAccount}`,'POST',{
+    //     nickname,
+    //     email,
+    //     password,
+    //     language,
+    //     code
+    // })).json()
 }

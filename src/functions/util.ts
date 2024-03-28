@@ -1,61 +1,23 @@
-import { ErrorResponse } from '../api/types';
-
-function fetchApi<T>(url = '', method = 'GET', body: T | object = {}): Promise<Response> {
-    try{
-        let headers = {};
-        let bodyCp = {};
-        //Formdata가 아닌 경우
-        if (!(body instanceof FormData)) {
-            console.log('??')
-            headers = { ...headers, 'Content-Type': 'application/json',mode: 'no-cors' };
-            bodyCp = { body: JSON.stringify(body) };
-    
-            const init =
-                method === 'GET'
-                    ? {
-                        method,
-                        headers,
-                    }
-                    : {
-                        method,
-                        headers,
-                        ...bodyCp,
-                    };
-    
-            return fetch(url, init);
+export async function callApi(url: string, method: string, body?: any): Promise<any> {
+    const options: RequestInit = {
+        method,
+        headers: {
+            'Content-Type': 'application/json', // 이 부분은 API에서 요구하는 content-type에 맞게 변경해야 할 수 있습니다.
+        },
+        body: body ? JSON.stringify(body) : undefined,
+    };
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            console.log()
+            throw new Error((await response.json() as Error).message);
         }
-        return fetch(url, {
-            method,
-            headers,
-            body,
-        });
-    }catch(err){
-        throw err;
+        return await response.json();
+    } catch (error) {
+        // 예외 처리
+        if(error instanceof Error){
+            console.error('Error calling API:',error.message);
+        }
+        throw error; // 예외를 다시 throw하여 상위에서 처리할 수 있도록 합니다.
     }
-    
-}
-export async function fetchResult<T>(url = '', method = 'GET', body: object = {}): Promise<T|null> {
-    console.log(url);
-    console.log(body)
-
-    //JsonResponse가 아니라 httpResponse 이다??
-    const jr = await fetchApi(`${url}`, method, body);
-    if(jr.status === 200 || jr.status === 201){
-        console.log(jr);
-        return null;
-    }else{
-        console.log(jr.body)
-        throw new Error(url)
-    }
-    // const jr = await res.json();
-    // if (jr.code === 2) {
-    //     // accese token 만료
-    //     return fetchResult(url, method, body);
-    // }
-    // if (jr.code === 21 || jr.code === 22) {
-    //     // refresh token 만료
-    //     alert('재로그인을 해주세요');
-    //     await fetchApi('/login/help/token', 'GET');
-    //     return jr;
-    // }
 }

@@ -13,40 +13,35 @@ export const codeVerifyBucket = createAsyncThunk(
     // action 이름
     "api/account/email/code/verify",
     // 처리할 비동기 함수
-    async ({email,code}:emailCodeVerifyArg,{ rejectWithValue }) => {
-        try {
-            // 서버에서 데이터를 불러옴
-            const res = await emailCodeVerify(email,code)
-            // action의 payload 리턴
-            return res;
-        } catch (err) {
-            console.log(err)
-            throw err;
-        }
+    async ({ email, code }: emailCodeVerifyArg, { rejectWithValue }) => {
+        // 서버에서 데이터를 불러옴
+        const res = await emailCodeVerify(email, code)
+        // action의 payload 리턴
+        return res;
 
     }
 );
 interface responseWrapper {
-    res: ErrorResponse|null,
-    code:string;
+    res: ErrorResponse | null,
+    code: string;
     isLoading: boolean;
-    complete:boolean;
+    complete: boolean;
 }
 export const initialState: responseWrapper = {
     res: null,
-    code:'',
+    code: '',
     isLoading: false,
-    complete:false
+    complete: false
 };
 const codeVerifySlice = createSlice({
     name: "account/email/code/verify",
     initialState,
     reducers: {
-        setCode:function(state,action:PayloadAction<string>){
+        setCode: function (state, action: PayloadAction<string>) {
             state.code = action.payload;
             return state;
         },
-        resetCode:function(RootState){
+        resetCode: function (RootState) {
             return initialState;
         }
     },
@@ -57,11 +52,11 @@ const codeVerifySlice = createSlice({
             state.isLoading = true;
             return state;
         })
-            .addCase(codeVerifyBucket.fulfilled, (state, action:PayloadAction<ErrorResponse|null>) => {
+            .addCase(codeVerifyBucket.fulfilled, (state, action: PayloadAction<ErrorResponse | null>) => {
                 console.log('fulfilled');
                 state.res = action.payload;
                 state.isLoading = false;
-                state.complete=true;
+                state.complete = true;
                 return state;
             })
             .addCase(codeVerifyBucket.rejected, (state, action) => {
@@ -72,6 +67,6 @@ const codeVerifySlice = createSlice({
     }
 
 })
-export const {setCode,resetCode} = codeVerifySlice.actions
+export const { setCode, resetCode } = codeVerifySlice.actions
 export default codeVerifySlice.reducer;
 

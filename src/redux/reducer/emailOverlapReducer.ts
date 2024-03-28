@@ -10,40 +10,35 @@ export const emailOverlapCheckBucket = createAsyncThunk(
     // action 이름
     "api/account/email",
     // 처리할 비동기 함수
-    async ({email}:nickNameCheckArg,{ rejectWithValue }) => {
-        try {
-            // 서버에서 데이터를 불러옴
-            const res = await nickAndEmailOverlapCheck('',email)
-            // action의 payload 리턴
-            return res;
-        } catch (err) {
-            console.log(err)
-            throw err;
-        }
+    async ({ email }: nickNameCheckArg, { rejectWithValue }) => {
+        // 서버에서 데이터를 불러옴
+        const res = await nickAndEmailOverlapCheck('', email)
+        // action의 payload 리턴
+        return res;
 
     }
 );
 interface responseWrapper {
-    res: ErrorResponse|null,
-    email:string;
+    res: ErrorResponse | null,
+    email: string;
     isLoading: boolean;
-    complete:boolean;
+    complete: boolean;
 }
 export const initialState: responseWrapper = {
     res: null,
-    email:'',
+    email: '',
     isLoading: false,
-    complete:false
+    complete: false
 };
 const emailOverlapCheckSlice = createSlice({
     name: "account/email",
     initialState,
     reducers: {
-        setEmail:function(state,action:PayloadAction<string>){
+        setEmail: function (state, action: PayloadAction<string>) {
             state.email = action.payload;
             return state;
         },
-        resetEmail:function(state){
+        resetEmail: function (state) {
             return initialState;
         }
     },
@@ -54,11 +49,11 @@ const emailOverlapCheckSlice = createSlice({
             state.isLoading = true;
             return state;
         })
-            .addCase(emailOverlapCheckBucket.fulfilled, (state, action:PayloadAction<ErrorResponse|null>) => {
+            .addCase(emailOverlapCheckBucket.fulfilled, (state, action: PayloadAction<null>) => {
                 console.log('fulfilled');
                 state.res = action.payload;
                 state.isLoading = false;
-                state.complete=true;
+                state.complete = true;
                 return state;
             })
             .addCase(emailOverlapCheckBucket.rejected, (state, action) => {
@@ -69,6 +64,6 @@ const emailOverlapCheckSlice = createSlice({
     }
 
 })
-export const {setEmail,resetEmail} = emailOverlapCheckSlice.actions;
+export const { setEmail, resetEmail } = emailOverlapCheckSlice.actions;
 export default emailOverlapCheckSlice.reducer;
 

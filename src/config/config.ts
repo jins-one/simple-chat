@@ -1,19 +1,19 @@
 const config = {
     apiUrl: {
         //닉네임, 이메일 중복체크
-        nickAndEmailOverlapCheck: 'api/auth/duplication-check',
+        nickAndEmailOverlapCheck: 'http://3.34.151.1:3000/auth/duplication-check',
 
         //이메일로 인증 코드 전송
-        sendEmail:'api/auth/send-code',
+        sendEmail:'http://3.34.151.1:3000/auth/send-code',
 
         //인증코드 검증
-        codeVerify:'api/auth/verify-code',
+        codeVerify:'http://3.34.151.1:3000/auth/verify-code',
 
         //일반회원 회원가입
-        newAccount:'api/auth/signup',
+        newAccount:'http://3.34.151.1:3000/auth/signup',
 
         //login
-        login:'api/auth/login'
+        login:'http://3.34.151.1:3000/auth/login'
     }
 }
 

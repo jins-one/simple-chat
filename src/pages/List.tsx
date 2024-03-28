@@ -4,57 +4,70 @@ import Header from "../components/Header";
 import { ReactComponent as NewRoom } from "../assets/images/new-room-btn.svg";
 import RoomCard from "../components/RoomCard";
 import { RoomCardType } from "../models/cusModal";
-import { io,Manager } from "socket.io-client";
-// const manager = new Manager("http://3.34.151.1:3000/chat");
-// const socket = manager.socket("http://3.34.151.1:3000/chat");
-const socket = io("http://3.34.151.1:3000/chats",{transports:['websocket'],reconnection:true} );
+import { Socket, io } from "socket.io-client";
+interface roomChat {
+    info: string,
+    roomId: number,
+    title: string,
+    users: {
+        id: string,
+        nickname: string
+    }[]
+}
 export default function List(): ReactElement {
     const [list, setList] = useState<RoomCardType[]>([]);
     const didMount = useRef<boolean>(false)
+    const [socket, setSocket] = useState<Socket | null>(null)
 
     function newRoomCreate(): void {
-        setList((p): RoomCardType[] => {
-            const newRoom: RoomCardType = {
-                nickName: "new",
-                lastMsg: "마지막",
-                lastMsgTime: 1,
-            };
-            return p.length > 0 ? [...p, newRoom] : [newRoom];
-        });
+        socket?.emit('create')
+
     }
 
     useEffect(() => {
-        if(!didMount.current){
-            didMount.current = true;
-            return;
-        }
-        // console.log('111')
-        // const socket = manager.socket("http://3.34.151.1:3000/chat");
-
-        // socket.
-        socket.connect();
-        socket.on('connect', () => {
-            console.log(socket.id)
+        if (socket) { return; }
+        if (!didMount.current) {didMount.current=true;return}
+        const sock = io("ws://3.34.151.1:3000/chats", {
+            auth: {
+                token: `${localStorage.getItem('access')}`,
+            },
+            transports: ['websocket'],
+            reconnection: false,
+            port: 3000
         })
-        socket.on('chats', (eee) => {
-            console.log(eee)
-        })
-        socket.on('create', (res) => {
-            console.log('create')
-            console.log(socket.id)
-        })
-        socket.on('rooms', (res) => {
+        sock.on('connection', (res) => {
+            console.log('connection = ')
             console.log(res)
         })
+        sock.on('disconnected', (ee) => {
+            console.log('disconnected')
+        })
+        sock.on('rooms', (res) => {
+            console.log('rooms = ')
+            console.log(res)
+        })
+        sock.on('create', (res: roomChat) => {
+            console.log('create = ')
+            console.log(res)
+            setList((p): RoomCardType[] => {
+                const newRoom: RoomCardType = {
+                    nickName: res.users[0].nickname,
+                    lastMsg: res.info,
+                    lastMsgTime: new Date(),
+                };
+                return p.length > 0 ? [...p, newRoom] : [newRoom];
+            });
+        })
+        setSocket(sock)
+        return () => {
+            if (socket)
+                sock.close()
+        }
+    }, [socket])
 
-        setTimeout(()=>{
-            console.log(11)
-            console.log(socket)
-            socket.emit('rooms',{})
-        },1500)
-
-        return (()=>{socket.close()})
-    }, [])
+    useEffect(() => {
+        console.log(list)
+    }, [list])
 
     return (
         <div className={st.container}>

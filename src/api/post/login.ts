@@ -1,10 +1,17 @@
 import config from "../../config/config";
-import { fetchResult } from "../../functions/util";
+import { callApi} from "../../functions/util";
 import { ErrorResponse } from "../types";
-
-export default function login(email='',password=''){
-    return fetchResult<ErrorResponse>(`${config.apiUrl.login}`,"POST",{
+export interface loginResponse{
+    accessToken:string;
+    refreshToken:string;
+}
+export default async function login(email='',password=''):Promise<loginResponse >{
+    return await callApi(`${config.apiUrl.login}`,"POST",{
         email,
         password
     })
+    // return await (await fetchResult<loginResponse>(`${config.apiUrl.login}`,"POST",{
+    //     email,
+    //     password
+    // })).json()
 }

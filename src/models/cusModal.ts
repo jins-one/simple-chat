@@ -1,6 +1,6 @@
 export type RoomCardType = {
     nickName: string;
     lastMsg : string;
-    lastMsgTime: number;
+    lastMsgTime: Date;
     myKey?:number;
 }

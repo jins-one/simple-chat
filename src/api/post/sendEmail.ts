@@ -1,7 +1,8 @@
 import config from "../../config/config";
-import { fetchResult } from "../../functions/util";
+import { callApi} from "../../functions/util";
 import { ErrorResponse } from "../types";
 
-export default function sendEmail(email=''){
-    return fetchResult<ErrorResponse>(`${config.apiUrl.sendEmail}?email=${email}`)
+export default async function sendEmail(email=''){
+    return await callApi(`${config.apiUrl.sendEmail}?email=${email}`,'GET')
+    // return await (await fetchResult<ErrorResponse>(`${config.apiUrl.sendEmail}?email=${email}`)).json()
 }
